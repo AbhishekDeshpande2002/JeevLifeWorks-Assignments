@@ -149,11 +149,13 @@ public class MainApplication {
             id = sc.nextInt();
         }
         System.out.print("Enter Name: ");
-        String name = sc.next();
+	sc.nextLine();	
+        String name = sc.nextLine();
         System.out.print("Enter Age: ");
         int age = sc.nextInt();
         System.out.print("Enter Grade (for eg. PASS or FAIL) : ");
-        String grade = sc.next();
+	sc.nextLine();
+        String grade = sc.nextLine();
         System.out.print("Enter Address: ");
         String address = sc.next();
 
