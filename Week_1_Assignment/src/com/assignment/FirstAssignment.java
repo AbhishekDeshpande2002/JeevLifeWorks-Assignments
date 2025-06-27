@@ -22,8 +22,7 @@ public class FirstAssignment {
 		double decimalNum = sc.nextDouble();
 		
 		System.out.println("Enter a single character : ");
-		String input = sc.next();
-		char singleChar = input.charAt(0);
+		char singleChar = sc.next().charAt(0);
 		
 		System.out.println("Enter a boolean value (true/false) : ");
 		boolean boolValue = sc.nextBoolean();
