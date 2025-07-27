@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
   selector: 'app-login', 
   // HTML template file for the component
   templateUrl: './login.component.html', 
-  // This makes the component a standalone component (no need to declare it in a module)
+  // This makes the component a standalone component 
   standalone: true, 
   // Required modules for forms and routing
   imports: [CommonModule, ReactiveFormsModule, RouterModule],  
@@ -44,7 +44,7 @@ export class LoginComponent {
     const { email, password } = this.form.value; 
     // Call auth service to validate credentials
     if (this.auth.login(email!, password!)) {
-      // If login successful, navigate to "todo" page
+      // If login successful, navigate to todo page
       this.router.navigate(['/todo']);
     } else {
       // Show error message if login fails
