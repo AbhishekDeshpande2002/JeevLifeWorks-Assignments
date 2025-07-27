@@ -1,0 +1,38 @@
+<!-- Reactive form bound to the 'form' FormGroup defined in the component -->
+<!-- On form submission, the signup() method in the component is triggered -->
+<form [formGroup]="form" (ngSubmit)="signup()">
+
+  <!-- Full Name Input Field -->
+  <div>
+    <label>Full Name</label>
+    <input formControlName="fullName" />
+  </div>
+
+  <!-- Email Input Field -->
+  <div>
+    <label>Email</label>
+    <input formControlName="email" />
+  </div>
+
+  <!-- Password Input Field (type password for masking input) -->
+  <div>
+    <label>Password</label>
+    <input formControlName="password" type="password" />
+  </div>
+
+  <!-- Confirm Password Input Field -->
+  <div>
+    <label>Confirm Password</label>
+    <input formControlName="confirmPassword" type="password" />
+  </div>
+
+  <!-- Validation Error Message for Mismatched Passwords -->
+  <!-- Shown only when the form has a 'mismatch' error and confirmPassword field has been touched -->
+  <div *ngIf="form.hasError('mismatch') && form.get('confirmPassword')?.touched">Passwords do not match</div>
+
+  <!-- Submit Button for Signup -->
+  <button type="submit">Signup</button>
+
+  <!-- Link to navigate to the Login page if the user already has an account -->
+  <p>Already have an account? <a routerLink="/login">Login</a></p>
+</form>

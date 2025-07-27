@@ -1,0 +1,68 @@
+<!-- Main container for the Todo component -->
+<div class="todo-container">
+  <h2>Todo List</h2>
+
+  <!-- Form to add a new task -->
+  <form [formGroup]="form" (ngSubmit)="addTask()">
+    <!-- Input for task title (required) -->
+    <input
+      type="text"
+      formControlName="title"
+      placeholder="Task Title"
+      required
+    />
+
+    <!-- Optional description field -->
+    <textarea
+      formControlName="description"
+      placeholder="Description (optional)"
+    ></textarea>
+
+    <!-- Submit button, disabled if form is invalid -->
+    <button type="submit" [disabled]="form.invalid">Add Task</button>
+  </form>
+
+<!-- Section for pending tasks -->
+  <h3>Pending Tasks</h3>
+  <!-- Show list if there are any pending tasks -->
+  <ul *ngIf="pendingTasks.length > 0; else noPending">
+    <li *ngFor="let task of pendingTasks; let i = index">
+      <!-- Display task title and description -->
+      {{ task.title }} - {{ task.description }}
+      <!-- Button to mark task as completed -->
+      <button (click)="toggleComplete(task)">Mark Completed</button>
+      <!-- Button to delete the task -->
+      <button (click)="deleteTask(i)">Delete</button>
+    </li>
+  </ul>
+
+  <!-- Template shown when there are no pending tasks -->
+  <ng-template #noPending>
+    <p>No pending tasks </p>
+  </ng-template>
+
+  <!-- Section for completed tasks -->
+  <h3>Completed Tasks</h3>
+
+  <!-- Show list if there are any completed tasks -->
+  <ul *ngIf="completedTasks.length > 0; else noCompleted">
+    <li *ngFor="let task of completedTasks; let i = index">
+      <!-- Display completed task title with strikethrough -->
+      <s>{{ task.title }}</s>
+      <!-- Button to undo completion -->
+      <button (click)="toggleComplete(task)">Undo</button>
+      <!-- Button to delete the task -->
+      <button (click)="deleteTask(i)">Delete</button>
+    </li>
+  </ul>
+
+  <!-- Template shown when there are no completed tasks -->
+  <ng-template #noCompleted>
+    <p>No tasks completed yet.</p>
+  </ng-template>
+
+  <hr />
+
+  <!-- Logout button to log the user out -->
+  <button (click)="logout()">Logout</button>
+</div>

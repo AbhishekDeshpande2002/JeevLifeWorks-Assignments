@@ -1,0 +1,28 @@
+<!-- Login form bound to the reactive FormGroup and triggers login() method on submit -->
+<form [formGroup]="form" (ngSubmit)="login()">
+  
+  <!-- Email Input Field -->
+  <div>
+    <label>Email</label>
+    <input formControlName="email" type="email" />
+    <!-- Error message shown when email is invalid and touched -->
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Invalid Email</div>
+  </div>
+
+  <!-- Password Input Field -->
+  <div>
+    <label>Password</label>
+    <input formControlName="password" type="password" />
+    <!-- Error message shown when password is empty and touched -->
+    <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Password is required</div>
+  </div>
+
+  <!-- General login error message (e.g., invalid credentials) -->
+  <div *ngIf="error" style="color:red">{{ error }}</div>
+
+  <!-- Submit Button -->
+  <button type="submit">Login</button>
+
+  <!-- Link to the signup page if user doesn't have an account -->
+  <p>Don't have an account? <a routerLink="/signup">Signup</a></p>
+</form>
