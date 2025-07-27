@@ -17,7 +17,7 @@ export class AuthService {
 
   /**
    * Logs in a user by validating email and password against stored data.
-   * If credentials match, sets `isAuthenticated` to true.
+   * If credentials match, sets isAuthenticated to true.
    * Accepts parameter email - The user's email.
    * Accepts parameter password - The user's password.
    * returns true if login is successful, false otherwise.
