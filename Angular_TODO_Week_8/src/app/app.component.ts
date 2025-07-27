@@ -10,10 +10,10 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   // Path to the component's HTML template
   templateUrl: './app.component.html',
-  // Declare this as a standalone component (not declared in any NgModule)
+  // Declare this as a standalone component 
   standalone: true,
   // Import necessary modules used in this component's template
-  imports: [CommonModule, RouterModule]   // // Allows use of *ngIf, *ngFor, router-outlet, etc.
+  imports: [CommonModule, RouterModule]   // // Allows use of *ngIf, *ngFor, router-outlet.
 })
 export class AppComponent {
   // This root component simply serves as a container for routed components via <router-outlet>
