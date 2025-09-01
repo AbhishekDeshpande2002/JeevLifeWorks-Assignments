@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Create New Document</h2>
+
+  <!-- ngForm directive creates a form model -->
+  <!-- (ngSubmit)="onSubmit()" -> Calls onSubmit() when form is submitted -->
+  <!-- #docForm="ngForm" -> Local template reference to access form state -->
+  <form (ngSubmit)="onSubmit()" #docForm="ngForm">
+
+    <!-- Title input -->
+    <div>
+      <label>Title:</label>
+      <!-- [(ngModel)] binds the input value to 'document.title' -->
+      <!-- 'required' ensures validation -->
+      <input type="text" name="title" [(ngModel)]="document.title" required />
+    </div>
+
+    <!-- Description textarea -->
+    <div>
+      <label>Description:</label>
+      <!-- Two-way binding with 'document.description' -->
+      <textarea name="description" [(ngModel)]="document.description" required></textarea>
+    </div>
+
+    <!-- Uploaded By input -->
+    <div>
+      <label>Uploaded By:</label>
+      <!-- Two-way binding with 'document.uploadedBy' -->
+      <input type="text" name="uploadedBy" [(ngModel)]="document.uploadedBy" required />
+    </div>
+
+    <!-- Submit button disabled until form is valid -->
+    <button type="submit" [disabled]="docForm.invalid">Save</button>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<!-- Wrapper container with Bootstrap margin-top -->
+<div class="container mt-3" *ngIf="doc as d"> 
+  <!-- *ngIf checks if 'doc' exists. If true, it assigns 'doc' to local variable 'd'. -->
+
+  <!-- Display document title -->
+  <h3>{{d.title}}</h3> 
+
+  <!-- Display document description -->
+  <p>{{d.description}}</p>
+
+  <!-- Show file details -->
+  <p><strong>File:</strong> {{d.fileName}} ({{d.fileSize}} bytes)</p>
+
+  <!-- Show who uploaded the document -->
+  <p><strong>Uploaded By:</strong> {{d.uploadedBy}}</p>
+
+  <!-- Show upload date, formatted using Angular date pipe -->
+  <p><strong>Uploaded At:</strong> {{d.uploadDate | date:'short'}}</p>
+
+  <!-- Action buttons -->
+  <!-- Download button (disabled when loading is true) -->
+  <button class="btn btn-primary me-2" 
+          (click)="download()" 
+          [disabled]="loading">Download</button>
+
+  <!-- Edit button -->
+  <button class="btn btn-warning me-2" (click)="edit()">Edit</button>
+
+  <!-- Delete button -->
+  <button class="btn btn-danger" (click)="delete()">Delete</button>
+</div>

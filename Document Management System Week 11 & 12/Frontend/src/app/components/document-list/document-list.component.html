@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <!-- Search and Upload section -->
+  <div class="d-flex mb-2">
+    <!-- Search input bound with ngModel -->
+    <input class="form-control me-2" [(ngModel)]="searchTitle" placeholder="Search by title" />
+    
+    <!-- Search button triggers load() -->
+    <button class="btn btn-primary me-2" (click)="load()">Search</button>
+    
+    <!-- Navigate to upload page -->
+    <a class="btn btn-success" routerLink="/upload">Upload</a>
+  </div>
+
+  <!-- Documents table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>File</th>
+        <th>Uploaded By</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <!-- Loop through documents list -->
+      <tr *ngFor="let d of documents">
+        <td>{{d.title}}</td>
+        <td>{{d.fileName}}</td>
+        <td>{{d.uploadedBy}}</td>
+        <!-- Format date in short form -->
+        <td>{{d.uploadDate | date:'short'}}</td>
+        <td>
+          <!-- Action buttons -->
+          <button class="btn btn-sm btn-info me-1" (click)="view(d)">View</button>
+          <button class="btn btn-sm btn-warning me-1" (click)="edit(d)">Edit</button>
+          <button class="btn btn-sm btn-danger me-1" (click)="delete(d)">Delete</button>
+          <button class="btn btn-sm btn-primary" (click)="download(d)">Download</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
